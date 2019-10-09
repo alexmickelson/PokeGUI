@@ -4,8 +4,10 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace PokeGUI.ViewModels
 {
@@ -35,6 +37,15 @@ namespace PokeGUI.ViewModels
         {
             get { return goToPokedexVisibility; }
             set { SetProperty(ref goToPokedexVisibility, value); }
+        }
+
+        public BitmapImage backgroundImageUri
+        {
+            get 
+            {
+                var p = Path.GetFullPath(@"../../../Views/Images/PokemonListBackground.png");
+                return new BitmapImage(new Uri(p));
+            }
         }
 
 

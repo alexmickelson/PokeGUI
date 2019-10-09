@@ -51,7 +51,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="C:/Users/Alex/source/repos/mexvance/PokeGUI/PokeGUI/Views/Images/PokemonListBackground.png"  AlignmentY="Top" AlignmentX="Center"/>
+            <ImageBrush Stretch="Fill" ImageSource="{Binding backgroundImageUri}"  AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
 
         <Button Content="Click me to enter your Pokedex!"

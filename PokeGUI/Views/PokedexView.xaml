@@ -158,11 +158,19 @@
                        HorizontalAlignment="Center"
                        FontWeight="Bold"/>
         </StackPanel>
-        <Button Grid.Row="5"
-                Grid.Column="1"
-                HorizontalAlignment="Center"
-                Width="300"
-                Content="Print Your Pokemon!"
-                Command="{Binding PrintPokemon}"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="5"
+                    Grid.Column="1">
+            <Button 
+                    HorizontalAlignment="Center"
+                    Width="300"
+                    Content="Print Your Pokemon as PDF!"
+                    Command="{Binding PrintPokemon}"/>
+            <Button 
+                    HorizontalAlignment="Center"
+                    Width="300"
+                    Content="Print Your Pokemon as Excel!"
+                    Command="{Binding SaveExcel}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

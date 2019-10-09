@@ -26,6 +26,7 @@ namespace PokeGUI.ViewModels
             this.pokeTypeRegistry = pokeTypeRegistry;
             this.pokePdfService = pokePdfService;
             this.pokemonExcelService = pokemonExcelService;
+            PokeTypeErrorVisibility = Visibility.Collapsed;
             LoadPokemonTask = LoadAsync();
         }
         
@@ -222,8 +223,15 @@ namespace PokeGUI.ViewModels
             PokeTypeError = SelectedPokeType == null
                 ? "Selected Pokemon type is not supported"
                 : null;
-        })); 
+        }));
 
-       
+        private DelegateCommand saveExcel;
+
+        public DelegateCommand SaveExcel => saveExcel ?? (saveExcel = new DelegateCommand(() =>
+        {
+            pokemonExcelService.generatePokemonExcelSheet(PokemonFilteredCollection);
+        }));
+
+
     }
 }
