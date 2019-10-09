@@ -1,4 +1,6 @@
 ﻿using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using OfficeOpenXml.Table;
 using PokeGUI.Models;
 using System;
 using System.Collections.Generic;
@@ -73,6 +75,21 @@ namespace PokeGUI.Services
                     worksheet.Cells[rowIndex, 4].Value = pokemon.Type2;
                     worksheet.Cells[rowIndex, 5].Value = pokemon.Image;
                     rowIndex++;
+                }
+
+                worksheet.Cells["A1:E1"].Merge = true;
+                worksheet.Cells["A1"].Style.Font.Bold = true;
+                worksheet.Cells["A1"].Style.Font.Size = 24.0F;
+                worksheet.Cells["A2:E2"].Style.Font.Bold = true;
+                worksheet.Cells[worksheet.Dimension.Address].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                
+                //var table = worksheet.Tables.Add(worksheet.Dimension, "title");
+                //table.TableStyle = TableStyles.Dark9;
+
+                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                for( int col = 1; col <= worksheet.Dimension.End.Column; col++)
+                {
+                    worksheet.Column(col).Width = worksheet.Column(col).Width + 2;
                 }
 
                 FileInfo saveFile = new FileInfo(@"C:\Users\Zachary Reiss\Documents\School\pokeDex.xlsx");
