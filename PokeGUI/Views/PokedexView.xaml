@@ -164,11 +164,13 @@
             <Button 
                     HorizontalAlignment="Center"
                     Width="300"
+                    Margin="5"
                     Content="Print Your Pokemon as PDF!"
                     Command="{Binding PrintPokemon}"/>
             <Button 
                     HorizontalAlignment="Center"
                     Width="300"
+                    Margin="5"
                     Content="Print Your Pokemon as Excel!"
                     Command="{Binding SaveExcel}"/>
         </StackPanel>

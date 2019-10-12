@@ -225,11 +225,13 @@ namespace PokeGUI.ViewModels
             if (selectedPokeType == null)
             {
                 PokeTypeErrorVisibility = Visibility.Visible;
+                GridVisibility = Visibility.Collapsed;
                 PokeTypeError = "Selected Pokemon type is not supported";
             }
             else
             {
                 PokeTypeErrorVisibility = Visibility.Hidden;
+                GridVisibility = Visibility.Visible;
                 PokeTypeError = null;
             }
 
