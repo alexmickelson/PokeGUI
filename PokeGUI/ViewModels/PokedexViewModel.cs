@@ -26,7 +26,7 @@ namespace PokeGUI.ViewModels
             this.pokeTypeRegistry = pokeTypeRegistry;
             this.pokePdfService = pokePdfService;
             this.pokemonExcelService = pokemonExcelService;
-            PokeTypeErrorVisibility = Visibility.Collapsed;
+            PokeTypeErrorVisibility = Visibility.Hidden;
             LoadPokemonTask = LoadAsync();
         }
         
@@ -57,7 +57,8 @@ namespace PokeGUI.ViewModels
         public List<PokeType> PokeTypes
         {
             get { return pokeTypes; }
-            set {
+            set 
+            {
                 SetProperty(ref pokeTypes, value); 
             }
         }
@@ -220,9 +221,21 @@ namespace PokeGUI.ViewModels
             //View expects selected types from poketypes
             SelectedPokeType = PokeTypes.Find(t => t.TypeName == SelectedPokeType.TypeName);
 
-            PokeTypeError = SelectedPokeType == null
-                ? "Selected Pokemon type is not supported"
-                : null;
+
+            if (selectedPokeType == null)
+            {
+                PokeTypeErrorVisibility = Visibility.Visible;
+                PokeTypeError = "Selected Pokemon type is not supported";
+            }
+            else
+            {
+                PokeTypeErrorVisibility = Visibility.Hidden;
+                PokeTypeError = null;
+            }
+
+            //PokeTypeError = SelectedPokeType == null
+            //    ? "Selected Pokemon type is not supported"
+            //    : null;
         }));
 
         private DelegateCommand saveExcel;

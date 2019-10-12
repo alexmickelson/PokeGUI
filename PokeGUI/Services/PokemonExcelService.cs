@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -82,9 +83,12 @@ namespace PokeGUI.Services
                 worksheet.Cells["A1"].Style.Font.Size = 24.0F;
                 worksheet.Cells["A2:E2"].Style.Font.Bold = true;
                 worksheet.Cells[worksheet.Dimension.Address].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                
-                //var table = worksheet.Tables.Add(worksheet.Dimension, "title");
-                //table.TableStyle = TableStyles.Dark9;
+
+                var range = worksheet.Cells[2, 1, pokemonCollection.Count() + 2, 5];
+                var table = worksheet.Tables.Add(range, "title");
+                table.TableStyle = TableStyles.Dark9;
+                //table.ShowTotal = true;
+                //table.Columns[0].TotalsRowFormula = "SUBTOTAL(109, [ID])";
 
                 worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
                 for( int col = 1; col <= worksheet.Dimension.End.Column; col++)

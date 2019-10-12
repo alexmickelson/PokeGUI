@@ -36,12 +36,12 @@
             <Button Command="{Binding LoadFilter}"
                     Content="Load Filter"/>
             <TextBlock Text="{Binding PokeTypeError}"                           
-                        Visibility="{Binding PokeTypeErrorVisibility}"
-                        FontWeight="Bold"
-                        FontSize="14"
-                        Foreground="Red"
-                        Width="150"
-                        TextWrapping="Wrap"
+                       Visibility="{Binding PokeTypeErrorVisibility}"
+                       FontWeight="Bold"
+                       FontSize="14"
+                       Foreground="Red"
+                       Width="150"
+                       TextWrapping="Wrap"
                        Background="#373737"
                        Padding="4"/>
         </StackPanel>
